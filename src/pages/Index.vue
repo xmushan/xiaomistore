@@ -1,8 +1,14 @@
 <template>
-    <div>zhuye</div>
+    <div>
+      <navHeader/>
+      <router-view/>
+      <navFooter/>
+    </div>
 </template>
 <script>
 import axios from 'axios'
+import navHeader from '../components/NavFooter'
+import navFooter from '../components/NavHeader'
 export default {
   data () {
     return {
@@ -20,14 +26,11 @@ export default {
     }
   },
   components: {
-    
+    navHeader,
+    navFooter
   }
 }
 </script>
 <style lang="scss">
 
 </style>
-
-
-
-
