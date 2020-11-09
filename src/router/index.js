@@ -7,12 +7,19 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: () => import('../pages/Index')
+    component: () => import('../pages/Index'),
+    redirect:'/home',
+    children: [
+      {
+        path: '/home',
+        component: ()=> import('../pages/Home')
+      }
+    ]
   },
   {
-    path: '/home',
-    name: 'home',
-    compoent: () => import('../pages/Home')
+    path: '/register',
+    name: 'register',
+    component: () => import('../pages/Register')
   }
 ]
 

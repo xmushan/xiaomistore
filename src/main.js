@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-Vue.config.productionTip = false
+Vue.config.productionTip = false //阻止启动生产消息，常用作指令
 new Vue({
   router,
   store,
