@@ -1,11 +1,13 @@
 <template>
-    <div>底部组件</div>
+    <div>
+      底部组件
+    </div>
 </template>
 <script>
 export default {
-  data() {
-    return {}
-  }
+  props: {
+  },
+  methods: {}
 }
 </script>
 <style lang="sass" scoped>

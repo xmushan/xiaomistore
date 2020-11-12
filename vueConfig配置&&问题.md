@@ -33,3 +33,11 @@ module.exports={
 
  >这个错误实际上时因为代理地址为空导致的，检查后发现proxy属性中的target的值为空，没有填入，填入后解决错误！
 
+
+
+### package.json中依赖的区别
+> dependencies：项目依赖。在编码阶段和呈现页面阶段都需要的，也就是说，项目依赖即在开发环境中，又在生产环境中。如js框架vue、页面路由vue-router，各种ui框架antd、element-ui、vant等。
+
+> devDependencies: 开发依赖。仅仅在写代码过程中需要使用，比如css预处理器、vue-cli脚手架、eslint之类。
+
+

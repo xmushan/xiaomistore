@@ -1,27 +1,23 @@
 <template>
     <div>
       <navHeader/>
-      <router-view/>
+        <router-view/>
       <navFooter/>
     </div>
 </template>
 <script>
-import axios from 'axios'
-import navHeader from '../components/NavFooter'
-import navFooter from '../components/NavHeader'
+import navFooter from '../components/NavFooter'
+import navHeader from '../components/NavHeader'
 export default {
   data () {
-    return {
-      username: '',
-      password: ''
-    }
+    return {}
   },
   mounted () {
     this.getMessage()
   },
   methods: {
     async getMessage () {
-      const res = await axios.get('/api/search/hotwords')
+      const res = await this.axios.get('/products')
       console.info(res)
     }
   },
