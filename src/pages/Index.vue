@@ -1,8 +1,8 @@
 <template>
     <div>
-      <navHeader/>
+      <nav-header/>
         <router-view/>
-      <navFooter/>
+      <nav-footer/>
     </div>
 </template>
 <script>

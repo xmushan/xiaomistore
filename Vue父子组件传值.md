@@ -64,3 +64,38 @@
         }
     </script>
 ```
+
+### props验证规则
+
+```
+    // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
+    propA: Number,
+    // 多个可能的类型
+    propB: [String, Number],
+    // 多个可能的类型
+    propsC: {
+        type: String,
+        required: true
+    },
+    // 带有默认值的数字
+    propsD: {
+        type: String,
+        default: 'default value'
+    },
+    // 带有默认值的对象
+    propsE: {
+        type: Object,
+        default: function() {
+            return {
+                message: 'value'
+            }
+        }
+    },
+    // 自定义验证函数
+    propsF: {
+        validator: function(value) {
+            return ['success','err','danger'].indexOf(value) !== -1
+        }
+    }
+```
+

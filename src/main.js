@@ -5,7 +5,7 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-axios.defaults.baseURL = 'http://mall-pre.springboot.cn'; // 配置默认域名
+axios.defaults.baseURL = '/api'; // 配置默认域名
 axios.defaults.timeout = 8000 // 超时时间
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {

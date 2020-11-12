@@ -1,12 +1,27 @@
 <template>
-  <div>Home</div>
+  <div>
+    主页
+  </div>
 </template>
 <script>
 export default {
   data () {
-    return {}
+    return {
+      userInfo: {
+        username: '',
+        password: ''
+      }
+    }
   },
-  methods: {}
+  mounted() {
+    
+  },
+  methods: {
+    async login() {
+      let res = await this.axios.post('/user/login',{...this.userInfo});
+      console.log(res)
+    }
+  }
 }
 </script>
 
