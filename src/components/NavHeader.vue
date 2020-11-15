@@ -5,12 +5,9 @@
       <div class="container">
         <!-- 左侧菜单 -->
         <div class="menu">
-          <a
-            :href="item.src"
-            v-for="(item, index) in menuTitle"
-            :key="index"
-            >{{ item.name }}</a
-          >
+          <a :href="item.src" v-for="(item, index) in menuTitle" :key="index">{{
+            item.name
+          }}</a>
         </div>
         <!-- 右侧用户信息 -->
         <div class="user">
@@ -70,7 +67,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '../assets/scss/config.scss';
+@import "../assets/scss/config.scss";
+a {
+  display: inline-block;
+  margin-right: 17px;
+  color: #B0B0B0;
+  &:hover {
+    color: #fff;
+  }
+}
 .header {
   .top_bar {
     display: flex;
@@ -94,23 +99,19 @@ export default {
           align-items: center;
           width: 110px;
           height: 40px;
-          color: white;
-          background: $colorA;
+          &:hover {
+            color: white;
+            background: $colorA;
+          }
           .icon_cart {
             display: inline-block;
             margin-right: 4px;
             width: 16px;
             height: 12px;
-            background: url('/imgs/icon-cart-checked.png') no-repeat center;
+            background: url("/imgs/icon-cart-checked.png") no-repeat center;
             background-size: contain;
-            
           }
         }
-      }
-      a {
-        display: inline-block;
-        margin-right: 17px;
-        color: #B0B0B0;
       }
     }
   }
