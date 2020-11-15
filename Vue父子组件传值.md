@@ -82,15 +82,21 @@
         type: String,
         default: 'default value'
     },
-    // 带有默认值的对象
+    // props传递数据的时候，默认值如果是数组或者对象，应该使用一个函数返回默认值
     propsE: {
         type: Object,
-        default: function() {
+        default: () => {
             return {
                 message: 'value'
             }
         }
     },
+    propsE1: {
+        type: Array,
+        default: () => {
+            return [{...},{...},{...}]
+        }
+    }
     // 自定义验证函数
     propsF: {
         validator: function(value) {
