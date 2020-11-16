@@ -13,9 +13,6 @@ export default {
       }
     }
   },
-  mounted() {
-    
-  },
   methods: {
     async login() {
       let res = await this.axios.post('/user/login',{...this.userInfo});

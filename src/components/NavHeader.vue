@@ -11,12 +11,18 @@
         </div>
         <!-- 右侧用户信息 -->
         <div class="user">
-          <a href="javascript:;">登录</a>
-          <a href="javascript:;">注册</a>
-          <a href="javascript:;" class="cart">
+          <div v-if="!userInfo">
+            <router-link to="/login">登录</router-link>
+            <router-link to="/register">注册</router-link>
+          </div>
+          <div v-else>
+            <a href="javascript:;">{{userInfo.username}}</a>
+            <a href="javascript:;" @click="loginOut">退出</a>
+          </div>
+          <router-link to="/cart" class="cart">
             <span class="icon_cart"></span>
-            <p>购物车</p>
-          </a>
+            <p>购物车({{cartCount}})</p>
+          </router-link >
         </div>
       </div>
     </div>
@@ -84,8 +90,30 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      userInfo: JSON.parse(window.sessionStorage.getItem('userInfo'))
+    };
   },
+  mounted(){
+    this.getCartNum()
+  },
+  methods:{
+    async getCartNum() {
+      if (this.userInfo){
+        let res = await this.axios.get('/carts/products/sum');
+        this.$store.commit('changeCartCount',res.data)
+      }
+    },
+    loginOut(){
+      window.sessionStorage.clear();
+      this.$router.go(0);
+    }
+  },
+  computed: {
+    cartCount(){
+      return this.$store.state.cartCount
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

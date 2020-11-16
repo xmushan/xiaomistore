@@ -5,11 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    cartCount: 0
   },
+  getters: {},
   mutations: {
+    changeCartCount(state,params) {
+      state.cartCount = params
+    }
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {}
 })

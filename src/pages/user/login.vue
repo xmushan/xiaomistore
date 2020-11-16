@@ -17,9 +17,28 @@ export default {
   },
   methods: {
     async login() {
-      let res = await this.axios.post("/login/user", { ...this.userInfo });
-      console.log(res);
+      let { username, password } = this.userInfo;
+      if (username.trim() == "" && password.trim() == "") {
+        this.$message("请输入用户名或密码");
+        return;
+      }
+      let res = await this.axios.post("/user/login", { ...this.userInfo });
+      if (res.status == 1) {
+          this.$message.error(res.msg);
+      } else {
+        window.sessionStorage.setItem('userInfo', JSON.stringify(res.data))
+        this.$message({
+            message: res.msg,
+            type: "success",
+        });
+        this.getCartNum();
+        this.$router.push('/home');
+      } 
     },
+    async getCartNum() {
+        let res = await this.axios.get('/carts/products/sum');
+        this.$store.commit('changeCartCount',res.data)
+    }
   },
 };
 </script>

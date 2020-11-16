@@ -12,15 +12,7 @@ export default {
   data () {
     return {}
   },
-  mounted () {
-    this.getMessage()
-  },
-  methods: {
-    async getMessage () {
-      const res = await this.axios.get('/products')
-      console.info(res)
-    }
-  },
+  methods: {},
   components: {
     navHeader,
     navFooter

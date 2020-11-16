@@ -4,7 +4,9 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+import 'element-ui/lib/theme-chalk/index.css'
+import {Message} from 'element-ui'
+Vue.prototype.$message = Message;
 axios.defaults.baseURL = '/api'; // 配置默认域名
 axios.defaults.timeout = 8000 // 超时时间
 // 添加请求拦截器
@@ -24,6 +26,7 @@ axios.interceptors.response.use(function (response) {
   console.warn(error);
   return Promise.reject(error);
 });
+
 
 Vue.use(VueAxios,axios)
 Vue.config.productionTip = false //阻止启动生产消息
