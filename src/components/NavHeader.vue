@@ -36,17 +36,31 @@
           <div class="item">
             <span>小米手机</span>
             <div class="children">
-              <ul>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-              </ul>
+              <div class="container">
+                <ul>
+                  <li>
+                    <div class="phone">
+                      <img src='https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e5f20a62c3d5b3d6806bd51ab6c5dd12.jpg?w=632&h=340'/>
+                      <div class="name">手机</div>
+                      <div class="price">1799</div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="phone">
+                      <img src='https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e5f20a62c3d5b3d6806bd51ab6c5dd12.jpg?w=632&h=340'/>
+                      <div class="name">手机</div>
+                      <div class="price">1799</div>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+
             </div>
           </div>
         </div>
         <div class="search">
-          <input class="input" type="text" placeholder="小米10pro" />
+          <input class="input" type="text" placeholder="这是一个假的搜索框" />
           <input type="button" class="span">
           <!-- <span></span> -->
         </div>
@@ -119,6 +133,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/config.scss";
 @import "../assets/scss/base.scss";
+@import "../assets/scss/mixin.scss";
 a {
   display: inline-block;
   margin-right: 17px;
@@ -129,24 +144,18 @@ a {
 }
 .header {
   .top_bar {
-    display: flex;
-    align-items: center;
+    @include flex($hov:'');
     height: 40px;
     font-size: 12px;
     color: #B0B0B0;
     background-color: #333333;
     .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex($hov:space-between);
       .user {
-        display: flex;
-        align-items: center;
+        @include flex($hov:'');
         .cart {
           margin-right: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          @include flex();
           width: 110px;
           height: 40px;
           background-color: #424242;
@@ -167,12 +176,10 @@ a {
     }
   }
   .top_header {
-    margin: 20px 0;
+    @include flex();
     height: 112px;
     .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex($hov:space-between);
       .logo {
         width: 55px;
         height: 55px;
@@ -206,9 +213,7 @@ a {
       }
       .menu {
         margin-left: 210px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        @include flex($hov:flex-start);
         flex: 1;
         .item {
           span {
@@ -224,12 +229,32 @@ a {
             }
           }
           .children {
-            position: relative;
-            display: none;
+            position: absolute;
+            top: 150px;
+            width: 100%;
+            height: 220px;
+            border: 1px solid red;
+            left: 0;
+            // display: none;
             ul {
               display: flex;
               li {
-                color: red;
+                margin: 0 10px;
+                
+                .phone{
+                  @include flex();
+                  flex-direction: column;
+                  img {
+                    width: 300px;
+                    height: 170px;
+                  }
+                  .name{
+                    font-size: 25px;
+                  }
+                  .price{
+                    color: $colorA;
+                  }
+                }
               }
             }
           }
@@ -238,19 +263,19 @@ a {
       .search {
         display: flex;
         width: 320px;
+        height: 55px;
         border: 1px solid #e0e0e0;
         .input {
-          width: 245px;
-          height: 55px;
+          box-sizing: border-box;
+          flex: 1;
           padding: 0 10px;
           font-size: 14px;
           border: none;
         }
         .span {
-          display: flex;
-          flex: 1;
-          justify-content: center;
-          align-items: center;
+          box-sizing: border-box;
+          width: 60px;
+          @include flex();
           padding: 4px 10px;
           border:none;
           border-left: 1px solid #e0e0e0;

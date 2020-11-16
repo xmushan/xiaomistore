@@ -1,0 +1,5 @@
+@mixin flex($hov:center,$col:center) {
+    display: flex;
+    justify-content: $hov;
+    align-items: $col;
+}
