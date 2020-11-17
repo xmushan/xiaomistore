@@ -11,7 +11,7 @@
         </div>
         <!-- 右侧用户信息 -->
         <div class="user">
-          <div v-if="!userInfo">
+          <div v-if="!userInfo" class="userInfo">
             <router-link to="/login">登录</router-link>
             <router-link to="/register">注册</router-link>
           </div>
@@ -36,26 +36,49 @@
           <div class="item">
             <span>小米手机</span>
             <div class="children">
-              <div class="container">
-                <ul>
-                  <li>
-                    <div class="phone">
-                      <img src='https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e5f20a62c3d5b3d6806bd51ab6c5dd12.jpg?w=632&h=340'/>
-                      <div class="name">手机</div>
-                      <div class="price">1799</div>
+              <ul>
+                <li class="product" v-for="(item,index) in miPhone" :key="index">
+                  <a href="" target="_blank">
+                    <div class="image">
+                      <img :src="item.mainImage" alt="">
                     </div>
-                  </li>
-                  <li>
-                    <div class="phone">
-                      <img src='https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e5f20a62c3d5b3d6806bd51ab6c5dd12.jpg?w=632&h=340'/>
-                      <div class="name">手机</div>
-                      <div class="price">1799</div>
+                    <div class="name">{{item.name}}</div>
+                    <div class="price">{{item.price}}</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="item">
+            <span>小米手机</span>
+            <div class="children">
+              <ul>
+                <li class="product" v-for="(item,index) in miPhone" :key="index">
+                  <a href="" target="_blank">
+                    <div class="image">
+                      <img :src="item.mainImage" alt="">
                     </div>
-                  </li>
-
-                </ul>
-              </div>
-
+                    <div class="name">{{item.name}}</div>
+                    <div class="price">{{item.price}}</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="item">
+            <span>小米手机</span>
+            <div class="children">
+              <ul>
+                <li class="product" v-for="(item,index) in miPhone" :key="index">
+                  <a href="" target="_blank">
+                    <div class="image">
+                      <img :src="item.mainImage" alt="">
+                    </div>
+                    <div class="name">{{item.name}}</div>
+                    <div class="price">{{item.price}}</div>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -105,11 +128,15 @@ export default {
   },
   data() {
     return {
-      userInfo: JSON.parse(window.sessionStorage.getItem('userInfo'))
+      userInfo: JSON.parse(window.sessionStorage.getItem('userInfo')),
+      miPhone: [],
+      reMiList: []
+
     };
   },
   mounted(){
     this.getCartNum()
+    this.getProduct()
   },
   methods:{
     async getCartNum() {
@@ -121,6 +148,18 @@ export default {
     loginOut(){
       window.sessionStorage.clear();
       this.$router.go(0);
+    },
+    async getProduct(keyword='') {
+      let res = await this.axios.get('/products',{
+        params: {
+          pageNum: 1,
+          pageSize: 20,
+          keyword
+        }
+      })
+      this.miPhone = res.data.list.slice(4,10)
+      console.log(this.miPhone)
+
     }
   },
   computed: {
@@ -134,14 +173,6 @@ export default {
 @import "../assets/scss/config.scss";
 @import "../assets/scss/base.scss";
 @import "../assets/scss/mixin.scss";
-a {
-  display: inline-block;
-  margin-right: 17px;
-  color: #B0B0B0;
-  &:hover {
-    color: #fff;
-  }
-}
 .header {
   .top_bar {
     @include flex($hov:'');
@@ -151,13 +182,34 @@ a {
     background-color: #333333;
     .container {
       @include flex($hov:space-between);
+      .menu{
+        a {
+          display: inline-block;
+          margin-right: 17px;
+          color: #B0B0B0;
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
       .user {
         @include flex($hov:'');
+        .userInfo{
+          a {
+            display: inline-block;
+            margin-right: 17px;
+            color: #B0B0B0;
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
         .cart {
           margin-right: 0;
           @include flex();
           width: 110px;
           height: 40px;
+          color: #B0B0B0;
           background-color: #424242;
           &:hover {
             color: white;
@@ -177,6 +229,7 @@ a {
   }
   .top_header {
     @include flex();
+    position: relative;
     height: 112px;
     .container {
       @include flex($hov:space-between);
@@ -185,10 +238,11 @@ a {
         height: 55px;
         background-color: $colorA;
         a {
+          display: inline-block;
           width: 110px;
           height: 55px;
           margin-left: 0px;
-          transition: 0.5s;
+          transition: all 0.5s;
           &:hover {
             margin-left: -55px;
             transition: 0.5s;
@@ -216,51 +270,87 @@ a {
         @include flex($hov:flex-start);
         flex: 1;
         .item {
+          padding: 46px 0;
           span {
             margin-right: 20px;
             font-size: 16px;
             font-weight: bold;
             color: #333333;
             cursor: pointer;
+            &:hover{
+              color: $colorA;
+            }
           }
-          &:hover {
-            .children {
-              display: block;
+          &:hover{
+            .children{
+              height: 220px;
+              opacity: 1;
+              transition: all .5s;
             }
           }
           .children {
             position: absolute;
-            top: 150px;
-            width: 100%;
-            height: 220px;
-            border: 1px solid red;
+            top: 112px;
             left: 0;
-            // display: none;
+            width:100%;
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            border-top: 1px solid #e5e5e5;
+            box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
+            transition: all .5s;
             ul {
+              width: 1220px;
+              margin: 0 auto;
               display: flex;
-              li {
-                margin: 0 10px;
-                
-                .phone{
-                  @include flex();
-                  flex-direction: column;
-                  img {
-                    width: 300px;
-                    height: 170px;
+              .product{
+                position: relative;
+                @include flex();
+                width: 16.6%;
+                height: 220px;
+                font-size: 12px;
+                &::before{
+                  content: '';
+                  display: inline-block;
+                  position: absolute;
+                  top: 40px;
+                  right:0;
+                  border-left: 1px solid $colorF;
+                  height: 100px;
+                  width: 1px;
+                }
+                &:last-child::before{
+                  display: none;
+                }
+                a{
+                  display: inline-block;
+                  .image{
+                    height: 137px;
+                    img{
+                      margin-top:26px;
+                      width: auto;
+                      height: 111px;
+                    }
                   }
                   .name{
-                    font-size: 25px;
+                    @include flex();
+                    margin-top: 19px;
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                    color: $colorB;
                   }
                   .price{
+                    @include flex();
                     color: $colorA;
                   }
                 }
-              }
+             }
             }
           }
         }
       }
       .search {
+        box-sizing: border-box;
         display: flex;
         width: 320px;
         height: 55px;
