@@ -1,8 +1,6 @@
 <template>
   <div>
-    <nav-header />
     产品详细页面
-    <nav-footer />
   </div>
 </template>
 <script>
@@ -22,10 +20,6 @@ export default {
       let res = await this.axios.get(`/products/${productId}`)
       console.log(res,'34')
     },
-  },
-  components: {
-    navHeader,
-    navFooter
   }
 };
 </script>

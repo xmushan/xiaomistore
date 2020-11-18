@@ -17,6 +17,7 @@
           </div>
           <div v-else>
             <a href="javascript:;">{{ userInfo.username }}</a>
+            <a href="javascript:;">我的订单</a>
             <a href="javascript:;" @click="loginOut">退出</a>
           </div>
           <router-link to="/cart" class="cart">
@@ -322,6 +323,8 @@ export default {
             border-top: 1px solid #e5e5e5;
             box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
             transition: all 0.5s;
+            z-index: 20;
+            background-color: #fff;
             ul {
               width: 1220px;
               margin: 0 auto;

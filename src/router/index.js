@@ -14,6 +14,11 @@ const routes = [
         path: '/home',
         name: 'name',
         component: ()=> import('../pages/home')
+      },
+      {
+        path: '/productDetail/:productId',
+        name: 'productDetail',
+        component: () => import('../pages/productDetail')
       }
     ]
   },
@@ -31,11 +36,6 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: () => import('../pages/user/cart')
-  },
-  {
-    path: '/productDetail/:productId',
-    name: 'productDetail',
-    component: () => import('../pages/productDetail')
   }
 ]
 
