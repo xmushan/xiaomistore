@@ -26,7 +26,9 @@ axios.interceptors.response.use(function (response) {
   console.warn(error);
   return Promise.reject(error);
 });
-
+Vue.filter('toFixNumber',function(value = 0){
+  return value.toFixed(2)
+})
 
 Vue.use(VueAxios,axios)
 Vue.config.productionTip = false //阻止启动生产消息

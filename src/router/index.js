@@ -31,6 +31,11 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: () => import('../pages/user/cart')
+  },
+  {
+    path: '/productDetail/:productId',
+    name: 'productDetail',
+    component: () => import('../pages/productDetail')
   }
 ]
 
