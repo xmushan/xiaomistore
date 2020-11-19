@@ -151,7 +151,7 @@ export default {
           position: relative;
           .fa{
             cursor: pointer;
-            font-size: 22px;
+            font-size: 18px;
             margin-left: 5px;;
             &:hover{
               color: $colorA;
