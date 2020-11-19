@@ -13,12 +13,13 @@
           <p class="phone_number">400-100-5678</p>
           <p class="time">8:00-18:00 (仅收市话费)</p>
           <span class="service">
-            <p>人工客服</p>
+              <i class="fa fa-commenting" aria-hidden="true"></i>
+              人工客服
           </span>
           <span class="attention">
             <p>关注小米：</p>
-            <img src="/imgs/weibo.png" alt="" />
-            <img src="/imgs/weixin.png" alt="" />
+            <i class="fa fa-weibo " aria-hidden="true"></i> 
+            <i class="fa fa-weixin " aria-hidden="true"></i>
           </span>
         </div>
       </div>
@@ -129,22 +130,18 @@ export default {
           color: $colorA;
           text-align: center;
           cursor: pointer;
-          // &:hover{
-          //   background: $colorA;
-          //   color: #fff;
-          //   transition: .8s;
-          // }
-          p {
-            @include flex();
-            &::before {
-              content: "";
-              margin-right: 5px;
-              display: inline-block;
-              width: 14px;
-              height: 14px;
-              background: url("/imgs/chat.png") no-repeat center;
-              background-size: contain;
+          transition: .5s;
+          &:hover{
+            color: #fff;
+            border-color: #fff;
+            background: $colorA;
+            transition: .5s;
+            .fa-commenting{
+              color: white;
             }
+          }
+          .fa-commenting{
+            margin-right: 5px;
           }
         }
         .attention {
@@ -152,10 +149,13 @@ export default {
           font-size: 12px;
           margin-top: 10px;
           position: relative;
-          img {
-            margin-left: 7px;
-            width: 24px;
-            height: auto;
+          .fa{
+            cursor: pointer;
+            font-size: 22px;
+            margin-left: 5px;;
+            &:hover{
+              color: $colorA;
+            }
           }
         }
       }

@@ -4,6 +4,7 @@
     <input type="text" placeholder="密码" v-model.trim="userInfo.password" />
     <input type="button" value="登录" @click="login" />
     <router-link to="/register">注册</router-link>
+<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
   </div>
 </template>
 <script>

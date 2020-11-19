@@ -57,4 +57,32 @@
     })
 ```
 
+### 路由动态参数
+```
+const routes = [
+    {
+        // 动态路径参数 以冒号开头
+        path: '/demo/:id'
+        component: () => import('../pages/demo)
+    }
+]
+```
+1. 路由传参方式
+> params方式传递: params 相当于 post 请求，参数不在地址栏中显示
+```
+    this.$router.push({path:'/demo', params:{id: '123'}});
+
+```
+> query传递: uery 相当于 get 请求，页面跳转的时候可以在地址栏看到请求参数
+```
+   this.$router.push({path:'/demo', query:{id: '123'}});
+```
+> 一个路由中传递的参数通过 **this.$route.params** 访问
+
+> this.$router 相当于一个全局的路由对象，包含路由相关的属性、对象 (如 history 对象) 和方法，在任何页面都可以通过 this.$router 调用其方法如 push() 、go() 、resolve() 等。
+
+> this.$route 表示当前的路由对象。每一个路由都有一个 route 对象，它是一个局部的对象，可以获取当前路由对应的 name , params, path , query 等属性。
+
+> 除了 $route.params 外，$route 对象还提供了其它有用的信息，
+>>API参考： https://router.vuejs.org/zh/api/#%E8%B7%AF%E7%94%B1%E5%AF%B9%E8%B1%A1, https://router.vuejs.org/zh/api/#routes
 
