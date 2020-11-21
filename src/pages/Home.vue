@@ -7,6 +7,13 @@
             <li class="item">
               <p>手机 电话卡</p>
               <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              <div class="children">
+                <ul>
+                  <li class="children-item">1</li>
+                  <li class="children-item">2</li>
+                  <li class="children-item">3</li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
@@ -45,6 +52,14 @@ export default {
         {
           id: '46',
           image: '/imgs/slider/slide-3.jpg'
+        },
+        {
+          id: '00',
+          image: '/imgs/slider/slide-4.jpg'
+        },
+        {
+          id: '100',
+          image: '/imgs/slider/slide-5.jpg'
         }
       ],
       swiperOption: {
@@ -109,6 +124,27 @@ export default {
             }
             .fa-chevron-right{
               color: #ffffff;
+            }
+            .children{
+              box-sizing: border-box;
+              position: absolute;
+              left: 264px;
+              top:0;
+              width: 962px;
+              height: 451px;
+              background-color: $colorG;
+              border: 1px solid $colorH;
+              padding: 26px 0;
+              ul{
+                @include flex();
+                flex-wrap: wrap;
+                .children-item{
+                  box-sizing: border-box;
+                  width: 265px;
+                  height: 76px;
+                  padding: 18px 20px;
+                }
+              }
             }
           }
         }
