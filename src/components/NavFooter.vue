@@ -73,6 +73,7 @@ export default {
 @import "../assets/scss/base.scss";
 @import "../assets/scss/mixin.scss";
 .footer {
+  padding: 20px;
   .container {
     .main_message{
       padding-top: 40px;
