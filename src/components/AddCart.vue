@@ -41,6 +41,7 @@ export default {
       },
       goToCart(){
           this.$emit('goToCart')
+          // this.$router.goNotFound() // 跳转404页面
       }
   },
 };
