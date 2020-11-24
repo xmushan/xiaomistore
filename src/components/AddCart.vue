@@ -40,7 +40,8 @@ export default {
           this.flag = !this.flag
       },
       goToCart(){
-          this.$emit('goToCart')
+          // this.$emit('goToCart')
+          this.$router.goNotFound()
       }
   },
 };
@@ -51,9 +52,11 @@ export default {
 @import "../assets/scss/base.scss";
 @import "../assets/scss/mixin.scss";
 .cart-enter-active, .cart-leave-active {
-  transition: opacity .3s;
+  top: 0px;
+  transition: all .3s;
 }
 .cart-enter, .cart-leave-to {
+  top: -1000px;
   opacity: 0;
 }
 

@@ -1,6 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+VueRouter.prototype.goNotFound = function () {
+  this.push({
+    name: 'page404',
+    params: {
+      '0': this.currentRoute.fullPath + 'xxxxx',
+    }
+  })
+}
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -36,6 +45,11 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: () => import('../pages/user/cart')
+  },
+  {
+    path: '*',
+    name: 'page404',
+    component: () => import('./Page404')
   }
 ]
 
