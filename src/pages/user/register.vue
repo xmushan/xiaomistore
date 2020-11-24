@@ -47,9 +47,6 @@ export default {
 @import "../../assets/scss/base.scss";
 @import "../../assets/scss/mixin.scss";
 .register-container {
-    width: 100vw;
-    height: 100vh;
-    background-color: red;
   .container {
     @include flex();
     margin-top: 177px;
