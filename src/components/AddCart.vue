@@ -40,8 +40,7 @@ export default {
           this.flag = !this.flag
       },
       goToCart(){
-          // this.$emit('goToCart')
-          this.$router.goNotFound()
+          this.$emit('goToCart')
       }
   },
 };
