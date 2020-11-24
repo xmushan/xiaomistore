@@ -261,6 +261,7 @@ export default {
         width: 55px;
         height: 55px;
         background-color: $colorA;
+        overflow: hidden;
         a {
           display: inline-block;
           width: 110px;
