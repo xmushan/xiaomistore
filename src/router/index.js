@@ -5,7 +5,7 @@ VueRouter.prototype.goNotFound = function () {
   this.push({
     name: 'page404',
     params: {
-      '0': this.currentRoute.fullPath + 'xxxxx',
+      '0': this.currentRoute.fullPath,
     }
   })
 }

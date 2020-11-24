@@ -31,7 +31,7 @@
     <div class="top_header">
       <div class="container">
         <div class="logo">
-          <a href="/#/home"></a>
+          <a href="/home"></a>
         </div>
         <div class="menu">
           <div class="item">

@@ -106,8 +106,13 @@ const adsList = [
     }
 ]
 
+// 注册界面底部数据
+const registerFooterMsg = [
+    '简体','繁体','English','常见问题','隐私政策'
+]
 export {
     menuList,
     slideList,
-    adsList
+    adsList,
+    registerFooterMsg
 }
