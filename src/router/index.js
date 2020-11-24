@@ -49,7 +49,7 @@ const routes = [
   {
     path: '*',
     name: 'page404',
-    component: () => import('./Page404')
+    component: () => import('../pages/err/page404')
   }
 ]
 
