@@ -82,7 +82,7 @@
   </div>
 </template>
 <script>
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import "swiper/css/swiper.css";
 import { menuList, adsList, slideList } from "../AnalogData";
 import noData from "../components/NoData";
