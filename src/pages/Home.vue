@@ -71,7 +71,7 @@
                 <p class="name">{{ item.name }}</p>
                 <p class="describe">{{ item.subtitle }}</p>
                 <p class="price">{{ item.price | fixPrice }}元起</p>
-                <div class="add-cart" @click="addCartFun">加入购物车</div>
+                <div class="add-cart" @click="addCartFun(item.categoryId)">加入购物车</div>
               </li>
             </ul>
           </div>
@@ -133,8 +133,16 @@ export default {
     toCart(){
       this.$router.push('/cart');
     },
-    addCartFun(){
-      this.$refs.cartDom.flag = true;
+   async addCartFun(productId){
+      let res = await this.axios.post("/carts",{
+        productId,
+        selected: true
+      })
+      if (res.status == 0) {
+        this.$refs.cartDom.flag = true
+      } else {
+        this.$message.error(res.msg);
+      }
     }
   },
   components: {
