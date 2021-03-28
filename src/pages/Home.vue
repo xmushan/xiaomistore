@@ -56,9 +56,9 @@
         <div class="title-container">
           <span class="name">手机</span>
           <span class="btn">
-              <p>查看全部</p>
-              <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 
-            </span>
+            <p>查看全部</p>
+            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+          </span>
         </div>
         <div class="content">
           <div class="left-image">
@@ -71,14 +71,20 @@
                 <p class="name">{{ item.name }}</p>
                 <p class="describe">{{ item.subtitle }}</p>
                 <p class="price">{{ item.price | fixPrice }}元起</p>
-                <div class="add-cart" @click="addCartFun(item.categoryId)">加入购物车</div>
+                <div class="add-cart" @click="addCartFun(item.categoryId)">
+                  加入购物车
+                </div>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-    <add-cart ref="cartDom" textValue='成功加入购物车，在挑挑喜欢的物品吧！' @goToCart="toCart"/>
+    <add-cart
+      ref="cartDom"
+      textValue="成功加入购物车，在挑挑喜欢的物品吧！"
+      @goToCart="toCart"
+    />
   </div>
 </template>
 <script>
@@ -86,7 +92,7 @@ import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
 import { menuList, adsList, slideList } from "../AnalogData";
 import noData from "../components/NoData";
-import AddCart from '../components/AddCart'
+import AddCart from "../components/AddCart";
 import { fixNumber } from "../util/index";
 export default {
   data() {
@@ -130,26 +136,26 @@ export default {
       this.phoneList = res.data.list.slice(6, 14);
       console.log(this.phoneList);
     },
-    toCart(){
-      this.$router.push('/cart');
+    toCart() {
+      this.$router.push("/cart");
     },
-   async addCartFun(productId){
-      let res = await this.axios.post("/carts",{
+    async addCartFun(productId) {
+      let res = await this.axios.post("/carts", {
         productId,
-        selected: true
-      })
+        selected: true,
+      });
       if (res.status == 0) {
-        this.$refs.cartDom.flag = true
+        this.$refs.cartDom.flag = true;
       } else {
         this.$message.error(res.msg);
       }
-    }
+    },
   },
   components: {
     Swiper,
     SwiperSlide,
     noData,
-    AddCart
+    AddCart,
   },
   directives: {
     swiper: directive,
@@ -280,22 +286,22 @@ export default {
       font-size: 22px;
       font-weight: 200;
       color: #333;
-      .btn{
+      .btn {
         @include flex();
         font-size: 16px;
-        transition: .3s;
+        transition: 0.3s;
         cursor: pointer;
-        &:hover{
+        &:hover {
           color: $colorA;
-          transition: .3s;
-          .fa{
+          transition: 0.3s;
+          .fa {
             color: $colorA;
           }
         }
-        .fa{
+        .fa {
           margin-left: 5px;
-          color:  #b0b0b0;
-          transition: .3s;
+          color: #b0b0b0;
+          transition: 0.3s;
         }
       }
     }
@@ -335,7 +341,7 @@ export default {
               box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
               transform: translate3d(0, -2px, 0);
               transition: 0.5s;
-              .add-cart{
+              .add-cart {
                 bottom: 30px;
                 // background-color: #f25807;
                 // transition: .3s;
@@ -363,7 +369,7 @@ export default {
               font-size: $fontJ;
               color: $colorA;
             }
-            .add-cart{
+            .add-cart {
               @include flex();
               position: absolute;
               bottom: -100px;
@@ -374,8 +380,8 @@ export default {
               border: 1px solid $colorA;
               background-color: #fff;
               transform: translateX(-50%);
-              transition: .3s;
-              &:hover{
+              transition: 0.3s;
+              &:hover {
                 background-color: $colorA;
                 color: #fff;
               }

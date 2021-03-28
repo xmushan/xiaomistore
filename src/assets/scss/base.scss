@@ -2,3 +2,14 @@
     margin: 0 auto;
     width: 1226px;
 }
+.flex-x-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-x-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
