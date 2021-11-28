@@ -3,9 +3,9 @@
     <div class="navWrapper">
       <div class="container flex-x-between">
         <div class="titleConfig flex-x-center">
-          <span class="bold">小米8</span>
-          <span>小米8</span>
-          <span>小米8</span>
+          <span class="bold">{{productInfo.name}}</span>
+          <span>{{productInfo.name}}</span>
+          <span>{{productInfo.name}}</span>
         </div>
         <div class="flex-x-center">
           <span>概述</span>
@@ -18,8 +18,8 @@
     <div class="bannerWrapper">
       <div class="coverPc">
         <div class="title">
-          <div class="name">小米8</div>
-          <div class="des">8周年旗舰版</div>
+          <div class="name">{{productInfo.name}}</div>
+          <div class="des">{{productInfo.subtitle}}</div>
         </div>
         <div class="profile">
           <span>全球首款双频 GPS</span>
@@ -28,7 +28,7 @@
           <span>红外人脸识别</span>
         </div>
         <div class="price flex-x-center">
-          <div class="currentPrice">¥ 2599</div>
+          <div class="currentPrice">¥ {{productInfo.price}}</div>
           <div class="lastPrice">¥3599</div>
         </div>
       </div>
@@ -115,6 +115,7 @@ export default {
         freeMode: true,
       },
       videVisible: false,
+      productInfo: {}
     };
   },
   mounted() {
@@ -125,7 +126,8 @@ export default {
       console.log(this.$route.params);
       let { productId } = this.$route.params;
       let res = await this.axios.get(`/products/${productId}`);
-      console.log(res, "34");
+      this.productInfo= res.data
+      console.log(this.productInfo, "34");
     },
   },
 };
@@ -204,7 +206,7 @@ export default {
         }
         .des {
           font-size: 24px;
-          letter-spacing: 13px;
+          letter-spacing: 8px;
         }
       }
       .price {
